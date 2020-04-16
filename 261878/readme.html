@@ -1,0 +1,49 @@
+<html>
+<p>This is the readme for the simulation code associated with the paper:
+</p><p>Bush D, Burgess N (2020) Detection and Advantages of Phase Coding in 
+the Absence of Rhythmicity. Hippocampus
+</p><p>This Matlab code was contributed by Dr Daniel Bush.
+</p>
+Usage
+<p>Note this software also requires the fastsmooth function available from matlab file exchange:
+  <a href="https://www.mathworks.com/matlabcentral/fileexchange/19998-fast-smoothing-function">
+    https://www.mathworks.com/matlabcentral/fileexchange/19998-fast-smoothing-function</a><br/>
+
+Download and extract this archive, add the functions from the above link to matlab's path (or add
+the functions to the extracted folder) and cd to the extracted folder. 
+Set your simulation preferences (see the annotations at the top of 
+the 'humanGridSim' script), or use the defaults by simply creating
+an empty 'in' structure (can type on matlab command line
+in=cell2struct(cell(1,1),{'gridScales'});), and then execute:
+</p><p>[in,pos,LFP,gridCells,cycle,cycleDecoding] = humanGridSim(in);
+</p><p>As an example, to simulate grid cell firing patterns in a 1D 
+environment and decode the movement trajectory from grid cell activity
+in each oscillatory cycle, execute:
+</p><p>in.environment = '1D';<br/>
+[in,pos,LFP,gridCells,cycle,cycleDecoding] = humanGridSim(in);
+</p><p>This should take &lt;30 seconds to run and then produce the figure below
+(cf. Figures 5 and 6 in Bush &amp; Burgess, 2020):
+</p><p><img src="./screenshot1.png" alt="screenshot 1" width="650">
+</p><p>Alternatively, to simulate grid cell firing patterns in a 2D 
+environment and then decode the movement trajectory from grid cell 
+activity in each oscillatory cycle, execute:
+</p><p>in.environment = '2D';<br/>
+[in,pos,LFP,gridCells,cycle,cycleDecoding] = humanGridSim(in);
+</p><p>This should take ~30 minutes to run and then produce the figure below
+(cf. Figures 5 and 6 in Bush &amp; Burgess, 2020):
+</p><p><img src="./screenshot2.png" alt="screenshot 2" width="650">
+</p><p>Further inputs can be provided as fields of the 'in' structure (see
+annotations at the top of the 'humanGridSim' script for details). 
+For example, the ability to decode movement direction from grid cell 
+activity in each oscillatory cycle can be eliminated by simulating
+'phase locked' grid firing. This can be achieved by executing:
+</p><p>in.environment = '2D';<br/>
+in.phaseLock = 'true';<br/>
+[in,pos,LFP,gridCells,cycle,cycleDecoding] = humanGridSim(in);
+</p><p>This should take ~30 minutes to run and then produce the figure below
+(cf. Figures 5 and 6 in Bush &amp; Burgess, 2020):
+</p><p><img src="./screenshot3.png" alt="screenshot 3" width="650">
+</p><p>Comments, criticisms and questions should be directed to
+drdanielbush at gmail.com
+</p>
+</html>
